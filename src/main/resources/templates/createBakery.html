@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cakes</title>
+    <meta charset="utf-8">
+    <meta name="server-time" th:content="${serverProcessingTime}" />
+    <script type="text/javascript" th:src="@{scripts/navigationBehavior.js}"></script>
+    <link rel="icon" href="/images/logo.svg" type="image/svg">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&family=Montserrat:wght@100&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="text/javascript" th:src="@{/scripts/forms/saveBakeryForm.js}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+<header th:insert="src/headerTemplate :: headerTemplate">
+</header>
+<main>
+    <nav>
+        <a href="pancake">Торты</a>
+        <a href = "bakery">Выпечка</a>
+        <a href="cookie">Печенье</a>
+        <a href = "assortment">Ассортимент</a>
+        <a href = "createPancake" sec:authorize="hasAnyRole('ROLE_PANCAKESELLER', 'ROLE_ADMIN')">Добавить торт</a>
+        <a href = "createCookie" sec:authorize="hasAnyRole('ROLE_COOKIESELLER', 'ROLE_ADMIN')">Добавить печенье</a>
+    </nav>
+    <script src="/scripts/navigationBehavior.js"></script>
+
+    <div class="newBakeryForm">
+        <form id="addNewBakeryForm">
+            <label >Введите название товара</label>
+            <input id="name"><br>
+
+            <label>Введите описание товара</label>
+            <textarea id="description" ></textarea><br>
+
+            <label >Введите цену товара</label>
+            <input id="price"><br>
+            <input type="submit">
+        </form>
+        <div class="errorContainer">
+
+        </div>
+    </div>
+<!--    <script type="text/javascript" th:src="@{/scripts/forms/saveBakeryForm.js}"></script>-->
+</main>
+
+<footer th:insert="src/footerTemplate :: footerTemplate">
+
+</footer>
+</body>
+</html>

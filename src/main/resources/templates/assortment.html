@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cakes</title>
+    <meta charset="utf-8">
+    <meta name="server-time" th:content="${serverProcessingTime}" />
+    <link rel="icon" href="/images/logo.svg" type="image/svg">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&family=Montserrat:wght@100&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!--    <script src="/scripts/loadTimeScript.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+</head>
+<body>
+
+<header th:insert="src/headerTemplate :: headerTemplate">
+</header>
+
+    <main>
+        <nav>
+            <a href="pancake">Торты</a>
+            <a href = "bakery">Выпечка</a>
+            <a href="cookie">Печенье</a>
+            <a href = "assortment">Ассортимент</a>
+            <a href = "createBakery" sec:authorize="hasAnyRole('ROLE_BAKERYSELLER', 'ROLE_ADMIN')">Добавить выпечку</a>
+            <a href = "createPancake" sec:authorize="hasAnyRole('ROLE_PANCAKESELLER', 'ROLE_ADMIN')">Добавить торт</a>
+            <a href = "createCookie" sec:authorize="hasAnyRole('ROLE_COOKIESELLER', 'ROLE_ADMIN')">Добавить печенье</a>
+
+        </nav>
+        <script src="/scripts/navigationBehavior.js"></script>
+
+    <div class = "form">
+        <form id="Assortment">
+            <label for="type">Название</label>
+            <select id="type" name="type">
+                <option value=""></option>
+                <option value="Торт">Торт</option>
+                <option value="Выпечка">Выпечка</option>
+                <option value="День рождения">День рождения</option>
+                <option value="Пирожные">Пирожные</option>
+                <!-- добавить другие жанры -->
+            </select>
+            <label for="taste">Вкус</label>
+            <input type="text" id="taste" name="taste"><br>
+            <label for="weight">Вес</label>
+            <input type="text" id="weight" name="weight"><br>
+            <label for="priceFrom">Цена от:</label>
+            <input type="number" id="priceFrom" name="priceFrom"><br>
+            <label for="priceTo">Цена до:</label>
+            <input type="number" id="priceTo" name="priceTo"><br>
+            <input type="submit" value="Сгенерировать таблицу">
+        </form>
+        <div id="resultTable"></div>
+        <script src="/scripts/tableGenerator.js"></script>
+        <script src="/scripts/download.js"></script>
+    </div>
+
+    </main>
+    <footer th:insert="src/footerTemplate :: footerTemplate">
+
+    </footer>
+
+</body>
+</html>

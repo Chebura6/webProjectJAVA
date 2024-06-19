@@ -1,0 +1,48 @@
+<div th:fragment="footerTemplate">
+    <h4>Contacts: </h4>
+    <h5>Instagram: </h5>
+    <h5>Telegram: </h5>
+    <table>
+        <caption>
+            Стоимость доставки по СПБ и ЛО
+        </caption>
+
+        <tr>
+            <th>Вес, кг</th>
+            <th>1-2</th>
+            <th>2-3</th>
+            <th>3-4</th>
+        </tr>
+        <tr>
+            <td>Санкт-Петербург</td>
+            <td>200</td>
+            <td>300</td>
+            <td>400</td>
+        </tr>
+        <tr>
+            <td>Всеволожск</td>
+            <td>350</td>
+            <td>450</td>
+            <td>550</td>
+        </tr>
+        <tr>
+            <td class="push">Пушкин</td>
+            <td>400</td>
+            <td>500</td>
+            <td>600</td>
+        </tr>
+        <tr>
+            <td>Остальные</td>
+            <td>500</td>
+            <td>750</td>
+            <td>850</td>
+
+        </tr>
+    </table>
+    <div class="reviews">
+        <span class="loader"></span>
+        <script src="/scripts/download.js"></script>
+        <script src="/scripts/loadTimeScript.js"></script>
+        <button class="footerReviews" onclick="buttonClicked(this)">Отзывы покупателей</button>
+    </div>
+</div>
